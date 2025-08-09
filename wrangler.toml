@@ -1,0 +1,5 @@
+name = "ost-pages"
+pages_build_output_dir = "./public"
+
+[observability]
+enabled = true

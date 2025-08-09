@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Opportunity Solution Tree Builder</title>
+  <link rel="stylesheet" href="/styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Opportunity Solution Tree Builder</h1>
+    <p class="tagline">Paste discovery transcripts. Extract opportunities. Grow a living tree.</p>
+  </header>
+  <main>
+    <section class="panel input-panel">
+      <h2>Add Discovery Notes</h2>
+      <textarea id="inputText" placeholder="Paste interview transcripts, user quotes, support tickets, etc."></textarea>
+      <div class="controls">
+        <button id="btnProcess">Add to Tree</button>
+        <button id="btnClear">Reset Tree</button>
+      </div>
+      <details class="advanced">
+        <summary>Advanced settings</summary>
+        <div class="grid">
+          <label>Similarity threshold (themes)<input type="number" id="themeThreshold" value="0.35" step="0.05" min="0.1" max="0.9"/></label>
+          <label>Similarity threshold (sub‑opportunities)<input type="number" id="subThreshold" value="0.5" step="0.05" min="0.1" max="0.95"/></label>
+          <label>Minimum sentence length (characters)<input type="number" id="minLen" value="40" step="10" min="10" max="300"/></label>
+          <label><input type="checkbox" id="cueFilter" checked/> Use opportunity cue filtering</label>
+        </div>
+      </details>
+      <div class="persist">
+        <button id="btnExport">Export JSON</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none"/>
+        <button id="btnImport">Import JSON</button>
+        <label class="switch"><input type="checkbox" id="useGPT" /><span>Use GPT-5 extraction</span></label>
+      </div>
+    </section>
+    <section class="panel tree-panel">
+      <div class="tree-header">
+        <h2>Opportunity Solution Tree</h2>
+        <div class="outcome">
+          <label>Desired Outcome<input type="text" id="desiredOutcome" placeholder="e.g. Increase online booking conversion by 20%"/></label>
+        </div>
+      </div>
+      <div id="treeContainer"></div>
+    </section>
+  </main>
+  <footer><small>Based on Teresa Torres’ OST. Heuristics or GPT-5 via /api/extract.</small></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
